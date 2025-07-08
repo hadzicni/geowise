@@ -1,4 +1,4 @@
-package com.example.geowise
+package com.hadzicni.geowise
 
 import io.flutter.embedding.android.FlutterActivity
 
