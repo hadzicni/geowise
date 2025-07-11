@@ -46,6 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           itemBuilder: (context) => const [
             PopupMenuItem(value: 'about', child: Text('About')),
+            PopupMenuItem(value: 'clear_cache', child: Text('Clear Cache')),
           ],
           onSelected: onMenuSelected,
         ),

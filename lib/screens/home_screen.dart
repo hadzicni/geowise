@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         );
     _countriesFuture = CountryService.fetchCountries();
     _countriesFuture.then((data) {
+      data.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
       setState(() {
         _allCountries = data;
         _filteredCountries = data;
@@ -184,8 +185,21 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           child: Column(
             children: [
               CustomAppBar(
-                onMenuSelected: (value) {
-                  if (value == 'about') _showAboutDialog();
+                onMenuSelected: (value) async {
+                  if (value == 'about') {
+                    _showAboutDialog();
+                  } else if (value == 'clear_cache') {
+                    await CountryService.clearCache();
+                    setState(() {
+                      _countriesFuture = CountryService.fetchCountries();
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Cache cleared, loading data...'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  }
                 },
               ),
 
