@@ -39,6 +39,7 @@ dependencies:
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.6
   flutter_test:
     sdk: flutter
 
@@ -54,6 +55,19 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/icons/app_icon.png"
   adaptive_icon_foreground: "assets/icons/app_icon.png"
+
+flutter_native_splash:
+  color: "#1e2326"
+  image: assets/icons/app_icon.png
+  android: true
+  ios: true
+  android_gravity: center
+  fullscreen: true
+
+  android_12:
+    image: assets/icons/app_icon.png
+    icon_background_color: "#1e2326"
+    icon_background_color_dark: "#1e2326"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
