@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   List<Country> _filteredCountries = [];
   final TextEditingController _searchController = TextEditingController();
   late AnimationController _animationController;
-  late AnimationController _headerAnimationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
 
@@ -30,10 +29,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 600),
-      vsync: this,
-    );
-    _headerAnimationController = AnimationController(
-      duration: const Duration(milliseconds: 800),
       vsync: this,
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -55,13 +50,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       _animationController.forward();
     });
     _searchController.addListener(_filterCountries);
-    _headerAnimationController.forward();
   }
 
   @override
   void dispose() {
     _animationController.dispose();
-    _headerAnimationController.dispose();
     _searchController.dispose();
     super.dispose();
   }
