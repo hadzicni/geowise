@@ -9,7 +9,7 @@ on:
 jobs:
   build_aab:
     name: Build Signed AAB Release Artifact
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
@@ -74,7 +74,7 @@ jobs:
 
   build_apk:
     name: Build Signed APK Release Artifact
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
